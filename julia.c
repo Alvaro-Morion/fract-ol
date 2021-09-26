@@ -21,18 +21,18 @@ int	ft_colour_j(double x, double y, t_complex c)
 	z.x = x;
 	z.y = y;
 	iter = 0;
-	while(iter < 10000 && z.x* z.x + z.y*z.y < 4)
+	while(iter < 1000 && hypot(z.x, z.y) <= 2)
 	{
 		tmp = z.x;
 		z.x = z.x*z.x - z.y*z.y + c.x;
 		z.y = 2 * tmp * z.y + c.y;
 		iter++;
 	}
-	if (iter == 10000)
+	if (iter == 1000)
 		return(0);
 	if (iter == 0)
 		return(255255255);
-	return(fmax(255255155 * iter/ 10000, 40));
+	return(255255255 * iter / 1000);
 }
 
 void    *ft_julia_set(int argc, char **argv, t_mlx mlx)
