@@ -15,7 +15,7 @@ void	ft_check_errors(int argc,char **argv)
 {
 	if (argc == 1 || !((*argv[1] == 'J' || *argv[1] == 'M') && !argv[1][1]))
 	{
-		printf("./fract-ol [Julia = J Mandelbrot = M] [Re(z0)=0] [Im(z0)=0]\n");
+		printf("./fract-ol [Julia = J Mandelbrot = M] [Re(z0)=0.285] [Im(z0)=-0.01]\n");
 		exit(0);
 	}
 }
@@ -29,8 +29,8 @@ int	main(int argc, char **argv)
 	mlx.wnd = mlx_new_window(mlx.mlx, 1300, 1300, "fract-ol");
 	if (*argv[1] == 'J')
 		mlx_put_image_to_window(mlx.mlx, mlx.wnd, ft_julia_set(argc, argv, mlx), 0 , 0);
-	/*if (*argv[1] == 'M')
-		mlx.img = ft_mandelbrot_set();*/
+	if (*argv[1] == 'M')
+		mlx.img.img = ft_mandelbrot_set(mlx);
 	mlx_loop(mlx.mlx);
 	return(0);
 }

@@ -42,4 +42,5 @@ typedef struct s_complex
 double	ft_str2dbl(char *nbr, double def);
 void ft_put_px(int x, int y, int col, t_mlx mlx);
 void    *ft_julia_set(int argc, char **argv, t_mlx mlx);
+void    *ft_mandelbrot_set(t_mlx mlx);
 #endif

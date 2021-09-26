@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/22 13:12:49 by amorion-          #+#    #+#             */
-/*   Updated: 2021/09/22 13:12:51 by amorion-         ###   ########.fr       */
+/*   Created: 2021/09/26 16:43:29 by amorion-          #+#    #+#             */
+/*   Updated: 2021/09/26 16:43:31 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract_ol.h"
-#include <math.h>
 
-int	ft_colour_j(double x, double y, t_complex c)
+int	ft_colour_m(double x, double y)
 {
-	double iter;
 	t_complex z;
+    t_complex c;
 	double tmp;
-	z.x = x;
-	z.y = y;
+    int iter;
+
+    z.x = 0;
+    z.y = 0;
+    c.x = x;
+	c.y = y;
 	iter = 0;
 	while(iter < 10000 && z.x* z.x + z.y*z.y < 4)
 	{
-		tmp = z.x;
+        tmp = z.x;
 		z.x = z.x*z.x - z.y*z.y + c.x;
 		z.y = 2 * tmp * z.y + c.y;
 		iter++;
@@ -35,20 +38,11 @@ int	ft_colour_j(double x, double y, t_complex c)
 	return(fmax(255255155 * iter/ 10000, 40));
 }
 
-void    *ft_julia_set(int argc, char **argv, t_mlx mlx)
+void    *ft_mandelbrot_set(t_mlx mlx)
 {
-	t_complex c;
 	int	x;
 	int y;
 
-	c.x = 0.285;
-	c.y = -0.01;
-	if (argc > 2)
-		c.x = ft_str2dbl(argv[2], c.x);
-	printf("%f\n", c.x);
-	if (argc > 3)
-		c.y = ft_str2dbl(argv[3], c.y);
-	printf("%f\n", c.y);
 	mlx.img.img = mlx_new_image(mlx.mlx, 1300, 1300);
 	mlx.img.addr = mlx_get_data_addr(mlx.img.img, &mlx.img.bxp, &mlx.img.llen,
 			&mlx.img.end);
@@ -58,10 +52,11 @@ void    *ft_julia_set(int argc, char **argv, t_mlx mlx)
 		x = 0;
 		while (x < 1300)
 		{
-			ft_put_px(x, y, ft_colour_j(4 * x / 1300. - 2, 4 * y / 1300. - 2, c), mlx);
+			ft_put_px(x, y, ft_colour_m(4 * x / 1300. - 2, 4 * y / 1300. - 2), mlx);
 			x++;
 		}
 		y++;
 	}
+    mlx_put_image_to_window(mlx.mlx, mlx.wnd, mlx.img.img, 0, 0);
 	return(mlx.img.img);
 }
