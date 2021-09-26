@@ -19,11 +19,14 @@ void	ft_check_errors(int argc,char **argv)
 		exit(0);
 	}
 }
-
+void leaks (void)
+{
+	system("leaks fract-ol");
+}
 int	main(int argc, char **argv)
 {
 	t_mlx mlx;
-
+	atexit(leaks);
 	ft_check_errors(argc, argv);
 	mlx.mlx = mlx_init();
 	mlx.wnd = mlx_new_window(mlx.mlx, 1300, 1300, "fract-ol");
