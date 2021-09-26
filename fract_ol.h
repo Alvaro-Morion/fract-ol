@@ -13,15 +13,33 @@
 #ifndef FRACT_OL_H
 # define FRACT_OL_H
 # include<unistd.h>
+# include<stdio.h>
 # include<stdlib.h>
 # include<math.h> 
 # include<mlx.h>
+
+typedef struct s_img
+{
+    void    *img;
+    void    *addr;
+    int     bxp;
+    int     llen;
+    int     end;
+} t_image;
+typedef struct s_mlx
+{
+    void    *mlx;
+    void    *wnd;
+    t_image img;
+} t_mlx;
+
 typedef struct s_complex
 {
     double   x;
     double   y;
 } t_complex;
 
-void	ft_putstr_fd(char *str, int fd);
-
+double	ft_str2dbl(char *nbr, double def);
+void ft_put_px(int x, int y, int col, t_mlx mlx);
+void    *ft_julia_set(int argc, char **argv, t_mlx mlx);
 #endif
