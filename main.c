@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 		mlx_put_image_to_window(mlx.mlx, mlx.wnd, ft_julia_set(argc, argv, mlx), 0 , 0);
 	if (*argv[1] == 'M')
 		mlx.img.img = ft_mandelbrot_set(mlx);
+	//mlx_key_hook(mlx.wnd, ft_press_key, &mlx);
 	mlx_loop(mlx.mlx);
 	return(0);
 }

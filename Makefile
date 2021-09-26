@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 
-SRCS = main.c utils.c julia.c mandelbrot.c
+SRCS = main.c utils.c julia.c mandelbrot.c keys.c
 
 OBJS = ${SRCS:.c=.o}
 

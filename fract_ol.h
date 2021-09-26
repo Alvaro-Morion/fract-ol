@@ -20,27 +20,28 @@
 
 typedef struct s_img
 {
-    void    *img;
-    void    *addr;
-    int     bxp;
-    int     llen;
-    int     end;
+	void    *img;
+	void    *addr;
+	int     bxp;
+	int     llen;
+	int     end;
 } t_image;
 typedef struct s_mlx
 {
-    void    *mlx;
-    void    *wnd;
-    t_image img;
+	void    *mlx;
+	void    *wnd;
+	t_image img;
 } t_mlx;
 
 typedef struct s_complex
 {
-    double   x;
-    double   y;
+	double   x;
+	double   y;
 } t_complex;
 
 double	ft_str2dbl(char *nbr, double def);
-void ft_put_px(int x, int y, int col, t_mlx mlx);
-void    *ft_julia_set(int argc, char **argv, t_mlx mlx);
-void    *ft_mandelbrot_set(t_mlx mlx);
+void	ft_put_px(int x, int y, int col, t_mlx mlx);
+void	*ft_julia_set(int argc, char **argv, t_mlx mlx);
+void	*ft_mandelbrot_set(t_mlx mlx);
+int		ft_press_key(int key, t_mlx *params);
 #endif
