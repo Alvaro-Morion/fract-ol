@@ -14,12 +14,14 @@
 
 void ft_close(t_mlx mlx)
 {
+    mlx_destroy_window(mlx.mlx, mlx.wnd);
+    exit(0);
 }
 
-int  ft_press_key(int key, t_mlx *params)
+int ft_press_key(int key, t_mlx *mlx)
 {
     printf("%d\n", key);
     if (key == 53)
-        ft_close(*params);
-    return(0);
+        ft_close(*mlx);
+    return (0);
 }
