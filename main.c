@@ -28,13 +28,16 @@ int	main(int argc, char **argv)
 	t_mlx mlx;
 	atexit(leaks);
 	ft_check_errors(argc, argv);
+	mlx.argc = argc;
+	mlx.argv = argv;
 	mlx.mlx = mlx_init();
 	mlx.wnd = mlx_new_window(mlx.mlx, 1300, 1300, "fract-ol");
-	if (*argv[1] == 'J')
-		mlx_put_image_to_window(mlx.mlx, mlx.wnd, ft_julia_set(argc, argv, mlx), 0 , 0);
-	if (*argv[1] == 'M')
-		mlx.img.img = ft_mandelbrot_set(mlx);
+	mlx.img.img = mlx_new_image(mlx.mlx, 1300, 1300);
+	mlx.img.xmax=2;
+	mlx.img.ymax=2;
+	ft_put_fractal(argc, argv, mlx);
 	mlx_key_hook(mlx.wnd, ft_press_key, &mlx);
+	mlx_mouse_hook(mlx.wnd, ft_mouse, &mlx);
 	mlx_loop(mlx.mlx);
 	return(0);
 }

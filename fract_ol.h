@@ -25,12 +25,16 @@ typedef struct s_img
 	int     bxp;
 	int     llen;
 	int     end;
-} t_image;
+	int		xmax;
+	int		ymax;
+} t_img;
 typedef struct s_mlx
 {
 	void    *mlx;
 	void    *wnd;
-	t_image img;
+	t_img	img;
+	int		argc;
+	char	**argv;
 } t_mlx;
 
 typedef struct s_complex
@@ -41,7 +45,9 @@ typedef struct s_complex
 
 double	ft_str2dbl(char *nbr, double def);
 void	ft_put_px(int x, int y, int col, t_mlx mlx);
-void	*ft_julia_set(int argc, char **argv, t_mlx mlx);
-void	*ft_mandelbrot_set(t_mlx mlx);
+void	ft_julia_set(int argc, char **argv, t_mlx mlx);
+void	ft_mandelbrot_set(t_mlx mlx);
+void	ft_put_fractal(int argc,char **argv, t_mlx mlx);
 int		ft_press_key(int key, t_mlx *params);
+int		ft_mouse(int mouse, t_mlx *mlx);
 #endif

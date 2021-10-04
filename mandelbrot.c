@@ -38,7 +38,7 @@ int	ft_colour_m(double x, double y)
 	return(255255255 * iter / 1000);
 }
 
-void    *ft_mandelbrot_set(t_mlx mlx)
+void    ft_mandelbrot_set(t_mlx mlx)
 {
 	int	x;
 	int y;
@@ -52,11 +52,10 @@ void    *ft_mandelbrot_set(t_mlx mlx)
 		x = 0;
 		while (x < 1300)
 		{
-			ft_put_px(x, y, ft_colour_m(4 * x / 1300. - 2, 4 * y / 1300. - 2), mlx);
+			ft_put_px(x, y, ft_colour_m(2*mlx.img.xmax * x / 1300. - mlx.img.xmax, 2*mlx.img.ymax * y / 1300. - mlx.img.ymax), mlx);
 			x++;
 		}
 		y++;
 	}
-    mlx_put_image_to_window(mlx.mlx, mlx.wnd, mlx.img.img, 0, 0);
-	return(mlx.img.img);
+	mlx_put_image_to_window(mlx.mlx, mlx.wnd, mlx.img.img, 0,0);
 }

@@ -20,8 +20,22 @@ void ft_close(t_mlx mlx)
 
 int ft_press_key(int key, t_mlx *mlx)
 {
-    printf("%d\n", key);
     if (key == 53)
         ft_close(*mlx);
     return (0);
+}
+
+void ft_zoom_in(t_mlx *mlx)
+{
+    mlx->img.xmax = 0.99 * mlx->img.xmax;
+    mlx->img.ymax = 0.99 * mlx->img.xmax;
+    ft_julia_set(mlx->argc, mlx->argv, *mlx);
+}
+int ft_mouse(int mouse, t_mlx *mlx)
+{
+    if (mouse == 5)
+        ft_zoom_in(mlx);
+    /*if (mouse == 4)
+        ft_zoom_out(*mlx);*/
+    return(0);
 }
