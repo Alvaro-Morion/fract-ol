@@ -16,10 +16,10 @@ double	ft_str2dbl(char *nbr, double def)
 {
 	double	number;
 	double	s;
-	double i;
+	double	i;
 
 	s = 1;
-	while(*nbr && *nbr == ' ' && *nbr == '\t')
+	while (*nbr && *nbr == ' ' && *nbr == '\t')
 		nbr++;
 	if (*nbr == '-' || *nbr == '+')
 	{
@@ -27,13 +27,13 @@ double	ft_str2dbl(char *nbr, double def)
 			s = -1;
 		nbr++;
 	}
-	if (*nbr<='0' && *nbr>='9' && *nbr !='.')
+	if (*nbr <= '0' && *nbr >= '9' && *nbr != '.')
 	{
 		printf("Unable to convert: %s, default used: %f", nbr, def);
-		return(def);
+		return (def);
 	}
 	number = 0;
-	while(*nbr <= '9' && *nbr >= '0')
+	while (*nbr <= '9' && *nbr >= '0')
 	{
 		number = number * 10 + *nbr - '0';
 		nbr++;
@@ -42,20 +42,20 @@ double	ft_str2dbl(char *nbr, double def)
 	{
 		nbr ++;
 		i = -1;
-		while (*nbr <= '9'&& *nbr >= '0')
+		while (*nbr <= '9' && *nbr >= '0')
 		{
-			number = number + (*nbr  - '0')* __exp10(i);
+			number = number + (*nbr - '0') * __exp10(i);
 			nbr++;
 			i--;
 		}
 	}
-	return(number * s);
+	return (number * s);
 }
 
-void ft_put_px(int x, int y, int col, t_mlx mlx)
+void	ft_put_px(int x, int y, int col, t_mlx mlx)
 {
-	char  *dest;
+	char	*dest;
 
 	dest = mlx.img.addr + (y * mlx.img.llen + x * (mlx.img.bxp / 8));
-	*(unsigned int *)dest = mlx_get_color_value(mlx.mlx,col);
+	*(unsigned int *)dest = mlx_get_color_value(mlx.mlx, col);
 }

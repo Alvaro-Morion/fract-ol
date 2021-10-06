@@ -12,33 +12,34 @@
 
 #include "fract_ol.h"
 
-int	ft_colour_j(double x, double y, t_complex c)
+int	ft_colour_j(double x, double y, t_complex c, t_mlx mlx)
 {
-	double iter;
-	t_complex z;
-	double tmp;
-	z.x = x;
-	z.y = y;
+	double		iter;
+	t_complex	z;
+	double		tmp;
+
+	z.x = 2 * mlx.img.xmax * x / 1300. - mlx.img.xmax;
+	z.y = 2 * mlx.img.ymax * y / 1300. - mlx.img.xmax;
 	iter = 0;
-	while(iter < 200 && hypot(z.x, z.y) <= 2)
+	while (iter < 200 && hypot(z.x, z.y) <= 2)
 	{
 		tmp = z.x;
-		z.x = z.x*z.x - z.y*z.y + c.x;
+		z.x = z.x * z.x - z.y * z.y + c.x;
 		z.y = 2 * tmp * z.y + c.y;
 		iter++;
 	}
 	if (iter == 200)
-		return(0);
+		return (0);
 	if (iter == 0)
-		return(255255255);
-	return(255255255 * iter / 200);
+		return (255255255);
+	return (255255255 * iter / 200);
 }
 
-void    ft_julia_set(int argc, char **argv, t_mlx mlx)
+void	ft_julia_set(int argc, char **argv, t_mlx mlx)
 {
-	t_complex c;
-	int	x;
-	int y;
+	t_complex	c;
+	int			x;
+	int			y;
 
 	c.x = 0.285;
 	c.y = -0.01;
@@ -46,7 +47,6 @@ void    ft_julia_set(int argc, char **argv, t_mlx mlx)
 		c.x = ft_str2dbl(argv[2], c.x);
 	if (argc > 3)
 		c.y = ft_str2dbl(argv[3], c.y);
-	mlx.img.img = mlx_new_image(mlx.mlx, 1300, 1300);
 	mlx.img.addr = mlx_get_data_addr(mlx.img.img, &mlx.img.bxp, &mlx.img.llen,
 			&mlx.img.end);
 	y = 0;
@@ -55,10 +55,10 @@ void    ft_julia_set(int argc, char **argv, t_mlx mlx)
 		x = 0;
 		while (x < 1300)
 		{
-			ft_put_px(x, y, ft_colour_j(2*mlx.img.xmax * x / 1300. - mlx.img.xmax, 2 * mlx.img.ymax * y / 1300. - mlx.img.xmax, c), mlx);
+			ft_put_px(x, y, ft_colour_j(x, y, c, mlx), mlx);
 			x++;
 		}
 		y++;
 	}
-	mlx_put_image_to_window(mlx.mlx, mlx.wnd, mlx.img.img, 0,0);
+	mlx_put_image_to_window(mlx.mlx, mlx.wnd, mlx.img.img, 0, 0);
 }
