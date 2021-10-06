@@ -25,19 +25,20 @@ void leaks (void)
 }
 int	main(int argc, char **argv)
 {
-	t_mlx mlx;
+	t_mlx *mlx;
 	atexit(leaks);
 	ft_check_errors(argc, argv);
-	mlx.argc = argc;
-	mlx.argv = argv;
-	mlx.mlx = mlx_init();
-	mlx.wnd = mlx_new_window(mlx.mlx, 1300, 1300, "fract-ol");
-	mlx.img.img = mlx_new_image(mlx.mlx, 1300, 1300);
-	mlx.img.xmax=2;
-	mlx.img.ymax=2;
-	ft_put_fractal(argc, argv, mlx);
-	mlx_key_hook(mlx.wnd, ft_press_key, &mlx);
-	mlx_mouse_hook(mlx.wnd, ft_mouse, &mlx);
-	mlx_loop(mlx.mlx);
+	mlx = malloc(sizeof(t_mlx));
+	mlx->argc = argc;
+	mlx->argv = argv;
+	mlx->mlx = mlx_init();
+	mlx->wnd = mlx_new_window(mlx->mlx, 1300, 1300, "fract-ol");
+	mlx->img.img = mlx_new_image(mlx->mlx, 1300, 1300);
+	mlx->img.xmax=2;
+	mlx->img.ymax=2;
+	ft_put_fractal(mlx->argc, mlx->argv, *mlx);
+	mlx_key_hook(mlx->wnd, ft_press_key, mlx);
+	mlx_mouse_hook(mlx->wnd, ft_mouse, mlx);
+	mlx_loop(mlx->mlx);
 	return(0);
 }

@@ -27,15 +27,24 @@ int ft_press_key(int key, t_mlx *mlx)
 
 void ft_zoom_in(t_mlx *mlx)
 {
-    mlx->img.xmax = 0.99 * mlx->img.xmax;
-    mlx->img.ymax = 0.99 * mlx->img.xmax;
-    ft_julia_set(mlx->argc, mlx->argv, *mlx);
+    mlx->img.xmax=0.99 * mlx->img.xmax;
+    mlx->img.ymax=0.99 * mlx->img.ymax;
+    ft_put_fractal(mlx->argc, mlx->argv, *mlx);
 }
-int ft_mouse(int mouse, t_mlx *mlx)
+
+void ft_zoom_out(t_mlx *mlx)
 {
+    mlx->img.xmax=1.01 * mlx->img.xmax;
+    mlx->img.ymax=1.01 * mlx->img.ymax;
+    ft_put_fractal(mlx->argc, mlx->argv, *mlx);
+}
+
+int ft_mouse(int mouse, int x, int y, t_mlx *mlx)
+{   (void)x;
+    (void)y;
     if (mouse == 5)
         ft_zoom_in(mlx);
-    /*if (mouse == 4)
-        ft_zoom_out(*mlx);*/
+    if (mouse == 4)
+        ft_zoom_out(mlx);
     return(0);
 }

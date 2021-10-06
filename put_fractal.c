@@ -13,7 +13,6 @@ int	ft_strcmp(const char *s1, const char *s2)
 
 void    ft_put_fractal(int argc,char **argv, t_mlx mlx)
 {
-    mlx_clear_window(mlx.mlx, mlx.wnd);
     if (!ft_strcmp(argv[1], "J"))
         ft_julia_set(argc, argv, mlx);
     if (!ft_strcmp(argv[1], "M"))

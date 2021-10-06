@@ -25,8 +25,8 @@ typedef struct s_img
 	int     bxp;
 	int     llen;
 	int     end;
-	int		xmax;
-	int		ymax;
+	double		xmax;
+	double		ymax;
 } t_img;
 typedef struct s_mlx
 {
@@ -49,5 +49,5 @@ void	ft_julia_set(int argc, char **argv, t_mlx mlx);
 void	ft_mandelbrot_set(t_mlx mlx);
 void	ft_put_fractal(int argc,char **argv, t_mlx mlx);
 int		ft_press_key(int key, t_mlx *params);
-int		ft_mouse(int mouse, t_mlx *mlx);
+int		ft_mouse(int mouse, int x, int y, t_mlx *mlx);
 #endif
