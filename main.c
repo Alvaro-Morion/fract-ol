@@ -14,7 +14,7 @@
 
 void	ft_check_errors(int argc, char **argv)
 {
-	if (argc == 1 || !((*argv[1] == 'J' || *argv[1] == 'M') && !argv[1][1]))
+	if (argc == 1 || (ft_strcmp(argv[1], "J") && ft_strcmp(argv[1], "M")))
 	{
 		printf("./fract-ol [Julia = J Mandelbrot = M] ");
 		printf("[Re(z0)=0.285] [Im(z0)=-0.01]\n");

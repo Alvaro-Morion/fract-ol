@@ -50,4 +50,5 @@ void	ft_mandelbrot_set(t_mlx mlx);
 void	ft_put_fractal(int argc, char **argv, t_mlx mlx);
 int		ft_press_key(int key, t_mlx *params);
 int		ft_mouse(int mouse, int x, int y, t_mlx *mlx);
+int		ft_strcmp(const char *s1, const char *s2);
 #endif

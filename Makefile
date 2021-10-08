@@ -6,7 +6,7 @@
 #    By: amorion- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/19 14:27:29 by amorion-          #+#    #+#              #
-#    Updated: 2021/09/19 14:27:31 by amorion-         ###   ########.fr        #
+#    Updated: 2021/10/08 11:24:55 by amorion-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRCS = julia.c keys.c main.c mandelbrot.c put_fractal.c utils.c
 
 OBJS = ${SRCS:.c=.o}
 
-NAME = fract-ol
+NAME = fractol
 .c.o:
 	@gcc -Wall -Wextra -Werror -c $< -o ${<:.c=.o}
 all: ${NAME}
