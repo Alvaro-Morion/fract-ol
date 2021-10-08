@@ -22,16 +22,10 @@ void	ft_check_errors(int argc, char **argv)
 	}
 }
 
-void	leaks(void)
-{
-	system("leaks fract-ol");
-}
-
 int	main(int argc, char **argv)
 {
 	t_mlx	*mlx;
 
-	atexit(leaks);
 	ft_check_errors(argc, argv);
 	mlx = malloc(sizeof(t_mlx));
 	mlx->argc = argc;
