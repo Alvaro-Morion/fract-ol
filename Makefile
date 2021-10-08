@@ -17,12 +17,12 @@ OBJS = ${SRCS:.c=.o}
 
 NAME = fract-ol
 .c.o:
-	@gcc -Wall -Wextra -c $< -o ${<:.c=.o}
+	@gcc -Wall -Wextra -Werror -c $< -o ${<:.c=.o}
 all: ${NAME}
 
 ${NAME}: ${OBJS}
 	@echo "binary generated"
-	@gcc -Wall -Werror -Wextra  -g -lmlx -framework OpenGL -framework AppKit ${OBJS} -o ${NAME}
+	@gcc -Wall -Werror -Wextra -lmlx -framework OpenGL -framework AppKit ${OBJS} -o ${NAME}
 clean:
 	@echo "o files deleted"
 	@rm -rf ${OBJS}

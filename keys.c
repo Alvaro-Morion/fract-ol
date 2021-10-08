@@ -28,15 +28,15 @@ int	ft_press_key(int key, t_mlx *mlx)
 
 void	ft_zoom_in(t_mlx *mlx)
 {
-	mlx->img.xmax = 0.99 * mlx->img.xmax;
-	mlx->img.ymax = 0.99 * mlx->img.ymax;
+	mlx->img.xmax = 0.95 * mlx->img.xmax;
+	mlx->img.ymax = 0.95 * mlx->img.ymax;
 	ft_put_fractal(mlx->argc, mlx->argv, *mlx);
 }
 
 void	ft_zoom_out(t_mlx *mlx)
 {
-	mlx->img.xmax = 1.01 * mlx->img.xmax;
-	mlx->img.ymax = 1.01 * mlx->img.ymax;
+	mlx->img.xmax = 1.05 * mlx->img.xmax;
+	mlx->img.ymax = 1.05 * mlx->img.ymax;
 	ft_put_fractal(mlx->argc, mlx->argv, *mlx);
 }
 
