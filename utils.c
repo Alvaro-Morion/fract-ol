@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 12:24:09 by amorion-          #+#    #+#             */
-/*   Updated: 2021/09/22 12:24:11 by amorion-         ###   ########.fr       */
+/*   Updated: 2021/10/21 18:49:32 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ double	ft_str2dbl(char *nbr, double def)
 			s = -1;
 		nbr++;
 	}
-	if (*nbr <= '0' && *nbr >= '9' && *nbr != '.')
+	if ((*nbr < '0' || *nbr > '9') && *nbr != '.')
 	{
-		printf("Unable to convert: %s, default used: %f", nbr, def);
+		printf("Unable to convert: %s, default used: %f\n", nbr, def);
 		return (def);
 	}
 	return (ft_get_number(nbr) * s);
